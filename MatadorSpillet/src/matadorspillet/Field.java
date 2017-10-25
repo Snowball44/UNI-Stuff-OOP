@@ -15,7 +15,7 @@ public class Field {
     private int number;
 
     public Field(String name, int number) {
-        if(number > 0 && number <= 42){
+        if(number > 0 && number <= 40){
         this.name = name;
         this.number = number;
         }
