@@ -20,7 +20,7 @@ public class Field {
         this.number = number;
         }
         else{
-            System.out.println("Please enter a number between 1 and 42");
+            System.out.println("Please enter a number between 1 and 40");
         }
     }
     
@@ -33,7 +33,7 @@ public class Field {
     }
     
     public String toString(){
-        return name + number;
+        return name + " " + number;
     }
     
 }

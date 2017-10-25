@@ -13,7 +13,7 @@ public class Dice {
     
     private int die1;
     private int die2;
-    private boolean dieEqual;
+    private boolean dieEqual = false;
     
     //Contruct
 
@@ -23,8 +23,6 @@ public class Dice {
         
     }
     
-    
-    
     //Methods
     
     public int throwDice(){
@@ -32,9 +30,16 @@ public class Dice {
         die1 = (int)(1 + Math.random() * 6);
         die2 = (int)(1 + Math.random() * 6);
         
-        return die1 + die2;
+        int result = die1 + die2;
+        return result;
     }
     
+    public int getDie1(){
+        return die1;
+    }
+    public int getDie2(){
+        return die2;
+    }
     public boolean isDieEqual(){
         if(die1 == die2){
             dieEqual = true;
