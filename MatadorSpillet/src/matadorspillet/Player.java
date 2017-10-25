@@ -37,7 +37,7 @@ public class Player {
             int die2 = die.getDie2();
             System.out.println("Die 2 is " + die2);
             int currentPos = currentField.getNumber();
-            if (currentPos + steps < 39) {
+            if (currentPos + steps < 40) {
                 currentField = Driver.fieldArray[steps + currentPos-1];
                 System.out.println("The player threw a total of " + steps + " and is now at " + currentField.toString());
                 if (die.isDieEqual() == true) {
