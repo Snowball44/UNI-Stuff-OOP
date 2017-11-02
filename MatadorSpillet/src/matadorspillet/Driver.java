@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package matadorspillet;
-
+import java.util.Scanner;
 import java.util.ArrayList;
+import javax.swing.text.html.HTML;
 
 /**
  *
@@ -15,9 +16,8 @@ public class Driver {
 
     //Making our fieldArray accessible multiple places
     public static Field[] fieldArray = new Field[40];
-
     public static void main(String[] args) {
-
+        Scanner input = new Scanner(System.in);
         //Filler data for the array
         for (int i = 0; i < fieldArray.length; i++) {
             fieldArray[i] = new Field("test" + (i + 1), (i + 1));
@@ -33,8 +33,9 @@ public class Driver {
 
             //The players throw each their dice
             System.out.println("Player 1 throws ");
+            System.out.println("Please type y or n if you wish to throw");
+            char choice = input.next().charAt(0);
             player1.move(dice1);
-            
             if(player1.getHasWon()==true){
                 break;
             }
@@ -43,7 +44,9 @@ public class Driver {
             if(player2.getHasWon()==true){
                 break;
             }
-
+            if(choice == 'n'){
+                break;
+            }
         }
 
         //Who won?

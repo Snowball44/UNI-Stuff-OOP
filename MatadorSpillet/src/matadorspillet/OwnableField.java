@@ -5,13 +5,14 @@ package matadorspillet;
  *
  * @author erso
  */
-public abstract class OwnebleField implements FieldInterface{
+public abstract class OwnableField implements FieldInterface{
     private String name;
     private int number;
     private int price;
+    private boolean isPawned = false;
     private Player owner = null;
 
-    protected OwnebleField(String name, int number, int price)
+    protected OwnableField(String name, int number, int price)
     {
         this.name = name;
         this.number = number;
@@ -42,6 +43,10 @@ public abstract class OwnebleField implements FieldInterface{
     public void setOwner(Player owner)
     {
         this.owner = owner;
+    }
+    
+    public void setisPawned(boolean isPawned){
+        this.isPawned = isPawned;
     }
 
     @Override

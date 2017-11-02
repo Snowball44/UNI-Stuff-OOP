@@ -31,7 +31,7 @@ public class GoToJailField implements FieldInterface
     @Override
     public void consequense(Player poorPlayer)
     {
-        poorPlayer.setPos(MonopolyConstants.JAIL_POS);
+        poorPlayer.setCurrentField(MonopolyConstants.JAIL_POS);
         
     }
 
