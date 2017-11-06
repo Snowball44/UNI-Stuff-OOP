@@ -18,7 +18,9 @@ public class Player {
     private ArrayList<OwnableField> ownsList = new ArrayList<>();
     private int money = MonopolyConstants.START_MONEY;
     private int currentPos = 1;
+    private int steps;
     private Boolean hasWon;
+    
 
     public Player(String name, Field currentField, Boolean hasWon) {
         this.name = name;
@@ -32,6 +34,14 @@ public class Player {
 
     public Field getCurrentField() {
         return currentField;
+    }
+    
+    public String getName(){
+        return this.name;
+    }
+    
+    public int getSteps(){
+        return steps;
     }
 
     public void setCurrentField(int currentPos){

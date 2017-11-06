@@ -1,6 +1,8 @@
 
 package matadorspillet;
 
+import java.util.Scanner;
+
 /**
  *
  * @author erso
@@ -11,7 +13,8 @@ public abstract class OwnableField implements FieldInterface{
     private int price;
     private boolean isPawned = false;
     private Player owner = null;
-
+    Scanner input = new Scanner(System.in);
+    private char choice;
     protected OwnableField(String name, int number, int price)
     {
         this.name = name;
@@ -48,7 +51,25 @@ public abstract class OwnableField implements FieldInterface{
     public void setisPawned(boolean isPawned){
         this.isPawned = isPawned;
     }
-
+    @Override 
+    public void consequence(Player poorPlayer){
+        if(this.getOwner()==poorPlayer){
+            System.out.println(poorPlayer.getName()+ " already owns this field");
+        }
+        else if(this.getOwner() == null){
+            System.out.println("Do you wish to buy this field? Please enter y or n");
+            char choice = input.next().charAt(0);
+            
+            if(choice == 'y'){
+                poorPlayer.buyField(this);
+            }
+            else{
+                System.out.println("You chose not to buy this field");
+            }
+        }
+        
+        
+    }
     @Override
     public String toString()
     {

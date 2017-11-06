@@ -17,8 +17,14 @@ public class BreweryField extends OwnableField {
 
     
     @Override
-    public void consequense(Player poorPlayer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void consequence(Player poorPlayer) {
+        super.consequence(poorPlayer);
+        
+        if(this.getOwner() != poorPlayer){
+            System.out.println(poorPlayer.getName() + "landed on " + poorPlayer.getCurrentField() + "and has to pay " + poorPlayer.getSteps());
+            poorPlayer.pay(poorPlayer.getSteps());
+            System.out.println("PLAYER BETALTE TEST");
+        }
     }
     
     
