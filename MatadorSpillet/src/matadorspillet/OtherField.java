@@ -21,17 +21,23 @@ public class OtherField implements FieldInterface {
 
     @Override
     public String getName() {
-        return this.getName();
+        return this.name;
     }
 
     @Override
     public int getNumber() {
-        return this.getNumber();
+        return this.number;
     }
 
     @Override
     public void consequence(Player poorPlayer) {
-        System.out.println(poorPlayer.getName() + " landed on " + this.getName());
+        //test
+    }
+    
+    @Override
+    public String toString()
+    {
+        return "Field name " + getName() + " Number " + getNumber();
     }
     
 }

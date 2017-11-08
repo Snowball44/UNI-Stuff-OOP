@@ -13,12 +13,13 @@ public abstract class OwnableField implements FieldInterface{
     private int number;
     private int price;
     private boolean isPawned = false;
+    private boolean buyChoice;
     private Player owner = null;
     Scanner input = new Scanner(System.in);
     private char choice;
-    protected OwnableField(int payField,String name, int number, int price)
+    protected OwnableField(String name, int number, int price)
     {
-        this.payField = payField;
+        
         this.name = name;
         this.number = number;
         this.price = price;
@@ -76,9 +77,11 @@ public abstract class OwnableField implements FieldInterface{
             
             if(choice == 'y'){
                 poorPlayer.buyField(this);
+                buyChoice = true;
             }
-            else{
+            else {
                 System.out.println("You chose not to buy this field");
+                buyChoice = false;
             }
         }
         
@@ -88,13 +91,6 @@ public abstract class OwnableField implements FieldInterface{
     public String toString()
     {
         return "OwnebleField{" + "name=" + name + ", number=" + number 
-                + ", price=" + price + ", owner=" + owner + '}';
+                + ", price=" + price + ", owner=" + (owner == null ? "" : owner.getName()) + '}';
     }
-
-    
-    
-    
-    
-    
-
 }

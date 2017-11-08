@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Player {
 
     private String name;
-    private OwnableField currentField;
+    private FieldInterface currentField;
     private ArrayList<OwnableField> ownsList = new ArrayList<>();
     private int money = MonopolyConstants.START_MONEY;
     private int currentPos = 1;
@@ -22,7 +22,7 @@ public class Player {
     private Boolean hasWon;
     
 
-    public Player(String name, OwnableField currentField, Boolean hasWon) {
+    public Player(String name, FieldInterface currentField, Boolean hasWon) {
         this.name = name;
         this.currentField = currentField;
         this.hasWon = hasWon;
@@ -32,7 +32,7 @@ public class Player {
         return hasWon;
     }
 
-    public OwnableField getCurrentField() {
+    public FieldInterface getCurrentField() {
         return currentField;
     }
     
@@ -66,6 +66,7 @@ public class Player {
                 }
                 currentPos = currentField.getNumber() % Driver.fieldArray.length;
                 System.out.println("The player threw a total of " + steps + " and is now at " + currentField.toString());
+                currentField.consequence(this);
                 System.out.println("Current position is " + currentPos);
                 
                 if (die.isDieEqual() == true) {

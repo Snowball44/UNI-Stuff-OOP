@@ -10,9 +10,12 @@ package matadorspillet;
  * @author Kim Christensen
  */
 public class BreweryField extends OwnableField {
+    
+private Dice dice;
 
-    public BreweryField(int steps,String name, int number, int price) {
-        super(steps,name, number, price);
+    public BreweryField(Dice dice,String name, int number, int price) {
+        super(name, number, price);
+        this.dice = dice;
     }
 
     

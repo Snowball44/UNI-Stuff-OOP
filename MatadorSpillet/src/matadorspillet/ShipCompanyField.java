@@ -10,9 +10,10 @@ package matadorspillet;
  * @author Kim
  */
 public class ShipCompanyField extends OwnableField {
-
-    public ShipCompanyField() {
-        super();
+    private int shipPay;
+    public ShipCompanyField(int shipPay,String name, int number, int price) {
+        super(name, number, price);
+        this.shipPay = shipPay;
     }
     
     @Override
@@ -20,7 +21,7 @@ public class ShipCompanyField extends OwnableField {
         super.consequence(poorPlayer);
         if(this.getOwner() != poorPlayer){
             
-            System.out.println(poorPlayer.getName() + "landed on " + poorPlayer.getCurrentField() + "and has to pay " + this.getPrice());
+            System.out.println(poorPlayer.getName() + " landed on " + poorPlayer.getCurrentField() + "and has to pay " + shipPay);
             poorPlayer.pay(this.getPrice());
             System.out.println("PLAYER BETALTE TEST");
         }

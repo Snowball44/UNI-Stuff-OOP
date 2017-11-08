@@ -13,17 +13,19 @@ import java.util.ArrayList;
  */
 public class Driver {
 
-    //Making our fieldArray accessible multiple places
-    public static OwnableField[] fieldArray = new OwnableField[40];
+    //Creating 40 fields that inherit from FieldInterface
+    public static FieldInterface[] fieldArray = new FieldInterface[40];
+    public static Dice dice1 = new Dice();
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         //Creating dice the players 
-        Dice dice1 = new Dice();
+        
         //Creating two players
         Player player1 = new Player("Kim", fieldArray[0], false);
         Player player2 = new Player("David", fieldArray[0], false);
+        Driver driver1 = new Driver();
         //Creating our fields
-        Driver.fillFields();
+        driver1.fillFields();
         //Creating a loop which makes players throw dice until they pass field 40
         while (true) {
 
@@ -58,39 +60,39 @@ public class Driver {
                 switch(i+1){
                     case 1: fieldArray[i] = new OtherField(MonopolyConstants.FIELD_NAMES[i],i+1);
                     break;
-                    case 3: System.out.println("Test 3");
+                    case 3: fieldArray[i] = new OtherField(MonopolyConstants.FIELD_NAMES[i],i+1);
                     break;
-                    case 5: System.out.println("Test 5");
+                    case 5: fieldArray[i] = new OtherField(MonopolyConstants.FIELD_NAMES[i],i+1);
                     break;
-                    case 8: System.out.println("test start");
+                    case 8: fieldArray[i] = new OtherField(MonopolyConstants.FIELD_NAMES[i],i+1);
                     break;
-                    case 11: System.out.println("test start");
+                    case 11: fieldArray[i] = new OtherField(MonopolyConstants.FIELD_NAMES[i],i+1);
                     break;
-                    case 18: System.out.println("test start");
+                    case 18: fieldArray[i] = new OtherField(MonopolyConstants.FIELD_NAMES[i],i+1);
                     break;
-                    case 21: System.out.println("test start");
+                    case 21: fieldArray[i] = new OtherField(MonopolyConstants.FIELD_NAMES[i],i+1);
                     break;
-                    case 23: System.out.println("test start");
+                    case 23: fieldArray[i] = new OtherField(MonopolyConstants.FIELD_NAMES[i],i+1);
                     break;
-                    case 34: System.out.println("test start");
+                    case 34: fieldArray[i] = new OtherField(MonopolyConstants.FIELD_NAMES[i],i+1);
                     break;
-                    case 37: System.out.println("test start");
+                    case 37: fieldArray[i] = new OtherField(MonopolyConstants.FIELD_NAMES[i],i+1);
                     break;
-                    case 39: System.out.println("test start");
+                    case 39: fieldArray[i] = new OtherField(MonopolyConstants.FIELD_NAMES[i],i+1);
                     break;
                     case 31: fieldArray[i] = new GoToJailField(MonopolyConstants.FIELD_NAMES[i], i+1); //jail
                     break;
-                    case 6: System.out.println("test start"); //Shipping
+                    case 6:  fieldArray[i] = new ShipCompanyField(50, MonopolyConstants.FIELD_NAMES[i],i+1,200); //Shipping
                     break;
-                    case 16: System.out.println("test start");
+                    case 16: fieldArray[i] = new ShipCompanyField(50, MonopolyConstants.FIELD_NAMES[i],i+1,200);
                     break;
-                    case 26: System.out.println("test start");
+                    case 26: fieldArray[i] = new ShipCompanyField(50, MonopolyConstants.FIELD_NAMES[i],i+1,200);
                     break;
-                    case 36: System.out.println("test start");
+                    case 36: fieldArray[i] = new ShipCompanyField(50, MonopolyConstants.FIELD_NAMES[i],i+1,200);
                     break;
-                    case 13: Driver.fieldArray[i] = new BreweryField( MonopolyConstants.FIELD_NAMES[i],i+1,150); //Brewery
+                    case 13: Driver.fieldArray[i] = new BreweryField(dice1, MonopolyConstants.FIELD_NAMES[i],i+1,150); //Brewery
                     break;
-                    case 29: System.out.println("brwwery");
+                    case 29: Driver.fieldArray[i] = new BreweryField(dice1, MonopolyConstants.FIELD_NAMES[i],i+1,150);
                     break;
                     default: Driver.fieldArray[i] = new StreetField(3 * i,MonopolyConstants.FIELD_NAMES[i],i + 1,10 * i); //Streets
                 }
