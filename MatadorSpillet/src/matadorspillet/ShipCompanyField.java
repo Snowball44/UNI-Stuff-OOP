@@ -7,22 +7,21 @@ package matadorspillet;
 
 /**
  *
- * @author Kim Christensen
+ * @author Kim
  */
-public class BreweryField extends OwnableField {
+public class ShipCompanyField extends OwnableField {
 
-    public BreweryField(int steps,String name, int number, int price) {
-        super(steps,name, number, price);
+    public ShipCompanyField() {
+        super();
     }
-
     
     @Override
     public void consequence(Player poorPlayer) {
         super.consequence(poorPlayer);
-        
         if(this.getOwner() != poorPlayer){
-            System.out.println(poorPlayer.getName() + "landed on " + poorPlayer.getCurrentField() + "and has to pay " + poorPlayer.getSteps());
-            poorPlayer.pay(poorPlayer.getSteps());
+            
+            System.out.println(poorPlayer.getName() + "landed on " + poorPlayer.getCurrentField() + "and has to pay " + this.getPrice());
+            poorPlayer.pay(this.getPrice());
             System.out.println("PLAYER BETALTE TEST");
         }
     }

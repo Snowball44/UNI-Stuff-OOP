@@ -11,8 +11,8 @@ package matadorspillet;
  */
 public class StreetField extends OwnableField {
     
-    public StreetField(String name, int number, int price){
-        super
+    public StreetField(int payField,String name, int number, int price){
+        super(payField, name, number, price);
     }
     
     
@@ -20,7 +20,11 @@ public class StreetField extends OwnableField {
     @Override
     public void consequence(Player poorPlayer) {
         super.consequence(poorPlayer);
-        if()
+        if(super.getOwner()!=poorPlayer){
+            poorPlayer.pay(super.getPrice());
+            super.getOwner().setMoney(super.getOwner().getMoney()+ super.getPayField());
+        }
+        
         
     }
     

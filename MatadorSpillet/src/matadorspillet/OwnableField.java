@@ -8,6 +8,7 @@ import java.util.Scanner;
  * @author erso
  */
 public abstract class OwnableField implements FieldInterface{
+    private int payField;
     private String name;
     private int number;
     private int price;
@@ -15,13 +16,26 @@ public abstract class OwnableField implements FieldInterface{
     private Player owner = null;
     Scanner input = new Scanner(System.in);
     private char choice;
-    protected OwnableField(String name, int number, int price)
+    protected OwnableField(int payField,String name, int number, int price)
     {
+        this.payField = payField;
         this.name = name;
         this.number = number;
         this.price = price;
     }
+/**
+     * @return the payField
+     */
+    public int getPayField() {
+        return payField;
+    }
 
+    /**
+     * @param payField the payField to set
+     */
+    public void setPayField(int payField) {
+        this.payField = payField;
+    }
     //@Override
     public String getName(){
         return name;
@@ -76,6 +90,9 @@ public abstract class OwnableField implements FieldInterface{
         return "OwnebleField{" + "name=" + name + ", number=" + number 
                 + ", price=" + price + ", owner=" + owner + '}';
     }
+
+    
+    
     
     
     

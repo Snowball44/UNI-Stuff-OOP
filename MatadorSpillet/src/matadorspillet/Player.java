@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Player {
 
     private String name;
-    private Field currentField;
+    private OwnableField currentField;
     private ArrayList<OwnableField> ownsList = new ArrayList<>();
     private int money = MonopolyConstants.START_MONEY;
     private int currentPos = 1;
@@ -22,7 +22,7 @@ public class Player {
     private Boolean hasWon;
     
 
-    public Player(String name, Field currentField, Boolean hasWon) {
+    public Player(String name, OwnableField currentField, Boolean hasWon) {
         this.name = name;
         this.currentField = currentField;
         this.hasWon = hasWon;
@@ -32,7 +32,7 @@ public class Player {
         return hasWon;
     }
 
-    public Field getCurrentField() {
+    public OwnableField getCurrentField() {
         return currentField;
     }
     
@@ -60,9 +60,9 @@ public class Player {
              
                 currentField = Driver.fieldArray[(steps + currentPos - 1) % Driver.fieldArray.length];
                 if(currentPos + steps > 40 ){
-                    money+= MonopolyConstants.PASSING_START;
+                    setMoney(getMoney() + MonopolyConstants.PASSING_START);
                     System.out.println("PENGE OVER START TEST");
-                    System.out.println("Player money is now " + money);
+                    System.out.println("Player money is now " + getMoney());
                 }
                 currentPos = currentField.getNumber() % Driver.fieldArray.length;
                 System.out.println("The player threw a total of " + steps + " and is now at " + currentField.toString());
@@ -77,15 +77,15 @@ public class Player {
     }
 
     public void pay(int pay) {
-        money -= pay;
+        setMoney(getMoney() - pay);
     }
 
     public void sell(int sell) {
-        money += sell;
+        setMoney(getMoney() + sell);
     }
 
     public void buyField(OwnableField ownable) {
-        if (money >= ownable.getPrice()) {
+        if (getMoney() >= ownable.getPrice()) {
             pay(ownable.getPrice());
             this.ownsList.add(ownable);
             ownable.setOwner(this);
@@ -101,5 +101,19 @@ public class Player {
         } else {
             System.out.println("You cannot pawn a property you do not have");
         }
+    }
+
+    /**
+     * @return the money
+     */
+    public int getMoney() {
+        return money;
+    }
+
+    /**
+     * @param money the money to set
+     */
+    public void setMoney(int money) {
+        this.money = money;
     }
 }
