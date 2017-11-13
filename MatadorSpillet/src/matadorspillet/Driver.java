@@ -16,45 +16,30 @@ public class Driver {
     //Creating 40 fields that inherit from FieldInterface
     public static FieldInterface[] fieldArray = new FieldInterface[40];
     public static Dice dice1 = new Dice();
+    public int numOfPlayers;
+    
+    public Driver(int numOfPlayers){
+      this.numOfPlayers = numOfPlayers;
+      
+    }
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        //Creating dice the players 
         
-        //Creating two players
-        Player player1 = new Player("Kim", fieldArray[0], false);
-        Player player2 = new Player("David", fieldArray[0], false);
-        Driver driver1 = new Driver();
+        Scanner input = new Scanner(System.in);
+        Driver driver1 = new Driver(2);
         //Creating our fields
         driver1.fillFields();
-        //Creating a loop which makes players throw dice until they pass field 40
-        while (true) {
-
-            //The players throw each their dice
-            System.out.println("Player 1 throws ");
-            System.out.println("Please type y or n if you wish to throw");
-            char choice = input.next().charAt(0);
-            player1.move(dice1);
-            if(player1.getHasWon()==true){
-                break;
-            }
-            System.out.println("Player 2 throws");
-            player2.move(dice1);
-            if(player2.getHasWon()==true){
-                break;
-            }
-            if(choice == 'n'){
-                break;
-            }
-        }
-
-        //Who won?
-        if (player1.getHasWon() == true) {
-            System.out.println("Player 1 wins!");
-        } else {
-            System.out.println("Player 2 wins!");
-        }
-
+        //Creating our players
+        driver1.createPlayer("Kim");
+        driver1.createPlayer("David");
     }
+    
+ 
+    
+    public void createPlayer(String name){
+        Player player1 = new Player(name);
+        
+    }
+    
     public void fillFields(){
             for (int i = 0; i < fieldArray.length; i++) {
                 switch(i+1){

@@ -14,18 +14,19 @@ import java.util.ArrayList;
 public class Player {
 
     private String name;
-    private FieldInterface currentField;
     private ArrayList<OwnableField> ownsList = new ArrayList<>();
     private int money = MonopolyConstants.START_MONEY;
     private int currentPos = 1;
     private int steps;
+    private FieldInterface currentField;
     private Boolean hasWon;
     
 
-    public Player(String name, FieldInterface currentField, Boolean hasWon) {
+    public Player(String name) {
         this.name = name;
-        this.currentField = currentField;
-        this.hasWon = hasWon;
+        currentField = Driver.fieldArray[1];
+        hasWon = false;
+      
     }
 
     public Boolean getHasWon() {
