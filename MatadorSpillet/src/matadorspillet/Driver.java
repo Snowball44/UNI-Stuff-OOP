@@ -17,11 +17,15 @@ public class Driver {
     public static FieldInterface[] fieldArray = new FieldInterface[40];
     public static Dice dice1 = new Dice();
     public int numOfPlayers;
+    public ArrayList<Player> playerArray;
+    
     
     public Driver(int numOfPlayers){
+        
       this.numOfPlayers = numOfPlayers;
-      
+      playerArray = new ArrayList<>();
     }
+    
     public static void main(String[] args) {
         
         Scanner input = new Scanner(System.in);
@@ -31,13 +35,29 @@ public class Driver {
         //Creating our players
         driver1.createPlayer("Kim");
         driver1.createPlayer("David");
+        driver1.play();
     }
     
  
     
     public void createPlayer(String name){
-        Player player1 = new Player(name);
-        
+       Player player1 = new Player(name);
+       playerArray.add(player1);
+    }
+    
+    public void play(){
+        while(!hasWon()){
+            //Input hele game loopet.
+        }
+    }
+    
+    public boolean hasWon(){
+        for(Player player: playerArray){
+            if(player.getHasWon()){
+                return true;
+            }
+        }
+        return false;
     }
     
     public void fillFields(){
